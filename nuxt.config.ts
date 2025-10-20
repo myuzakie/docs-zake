@@ -1,5 +1,4 @@
 // nuxt.config.ts
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -10,37 +9,38 @@ export default defineNuxtConfig({
     'nuxt-llms'
   ],
 
-  devtools: {
-    enabled: true
-  },
+  devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
 
   content: {
     build: {
       markdown: {
-        toc: {
-          searchDepth: 1
-        }
+        toc: { searchDepth: 1 }
       }
     },
+    // PREVIEW HARUS AKTIF
     preview: {
       dev: true
-      // api: 'https://api.nuxt.studio'
+      // kalau nanti butuh integrasi Nuxt Studio remote, tambahkan `api: 'https://api.nuxt.studio'`
     }
   },
 
   compatibilityDate: '2024-07-11',
 
+  // jangan prerender seluruh site — biarkan SSR/server functions tersedia
   nitro: {
+    // kosongkan prerender (atau hapus property ini sama sekali)
     prerender: {
       routes: [],
       crawlLinks: false,
       autoSubfolderIndex: false
-    },
-    routeRules: {
-      '/**': { ssr: true }
     }
+  },
+
+  // Pastikan routeRules di top-level — agar hosting menjalankan SSR
+  routeRules: {
+    '/**': { ssr: true }
   },
 
   eslint: {
@@ -52,9 +52,7 @@ export default defineNuxtConfig({
     }
   },
 
-  icon: {
-    provider: 'iconify'
-  },
+  icon: { provider: 'iconify' },
 
   llms: {
     domain: 'https://docs-template.nuxt.dev/',
@@ -68,16 +66,12 @@ export default defineNuxtConfig({
       {
         title: 'Getting Started',
         contentCollection: 'docs',
-        contentFilters: [
-          { field: 'path', operator: 'LIKE', value: '/getting-started%' }
-        ]
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/getting-started%' }]
       },
       {
         title: 'Essentials',
         contentCollection: 'docs',
-        contentFilters: [
-          { field: 'path', operator: 'LIKE', value: '/essentials%' }
-        ]
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/essentials%' }]
       }
     ]
   }
