@@ -21,9 +21,13 @@ export default defineNuxtConfig({
     },
     // PREVIEW HARUS AKTIF
     preview: {
-      dev: true
-      // kalau nanti butuh integrasi Nuxt Studio remote, tambahkan `api: 'https://api.nuxt.studio'`
-    }
+        api: 'https://api.nuxt.studio',
+        gitInfo: {
+        name: 'docs-zake',                   // <--- repo name only
+        owner: 'myuzakie',                   // <--- owner/org
+        url: 'https://github.com/myuzakie/docs-zake' // <--- no .git
+        }
+    }   
   },
 
   compatibilityDate: '2024-07-11',
