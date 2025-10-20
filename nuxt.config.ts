@@ -1,3 +1,4 @@
+// nuxt.config.ts
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -19,12 +20,13 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         toc: {
-          toc: { searchDepth: 1 }
+          searchDepth: 1
         }
       }
     },
-    preview: {{
-      dev: true,
+    preview: {
+      dev: true
+      // api: 'https://api.nuxt.studio'
     }
   },
 
@@ -32,11 +34,12 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: [
-        '/'
-      ],
-      crawlLinks: true,
+      routes: [],
+      crawlLinks: false,
       autoSubfolderIndex: false
+    },
+    routeRules: {
+      '/**': { ssr: true }
     }
   },
 
