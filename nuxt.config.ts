@@ -19,9 +19,12 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         toc: {
-          searchDepth: 1
+          toc: { searchDepth: 1 }
         }
       }
+    },
+    preview: {{
+      dev: true,
     }
   },
 
